@@ -280,9 +280,8 @@ nav h1 a {
   padding: 0 15 0 15;
 }
 
-.header {
-  display: block;
-  position: fixed;
+.head {
+  position: relative;
   z-index: 1000;
 }
 .overflow {

@@ -1,0 +1,64 @@
+/*TODO: preparation for use flexible blocks*/
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.container,
+#maincontent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 100%;
+}
+
+
+/*TODO: settings for screen less 350px at width*/
+@media screen and (max-width: 349px) {
+}
+
+
+/*TODO: settings for screen more 349px and less 550px at width*/
+@media screen and (max-width: 549px) and (min-width: 350px) {
+  
+}
+
+
+/*TODO: settings for screen more 549px at width*/
+@media screen and (min-width: 550px) {
+  #maincontent {
+    /*  flex-direction: row-reverse;*/
+    display: -webkit-box;
+  }
+  .filter {
+    width: 50%;
+  }
+  .maps {
+    width: 50%;
+    display: block;
+    position: fixed;
+    top: 80px;
+
+  }
+
+  .filds {
+    padding: 0 0 0 0;
+  }
+
+
+
+/*TODO: settings for screen more 548px and less 769px at width*/
+@media screen and (max-width: 768px) and (min-width: 549px) {
+}
+
+
+/*TODO: settings for fixing the layout on 950px at width*/
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+    margin: auto;
+  }
+}
