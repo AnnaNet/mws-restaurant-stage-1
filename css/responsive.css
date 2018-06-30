@@ -17,7 +17,10 @@ body {
 
 
 /*TODO: settings for screen less 350px at width*/
-@media screen and (max-width: 349px) {
+@media screen and (max-width: 1200px) {
+  .head {
+    width: 100%;
+  }
 }
 
 
@@ -29,28 +32,25 @@ body {
 
 /*TODO: settings for screen more 549px at width*/
 @media screen and (min-width: 550px) {
-  #maincontent {
-    /*  flex-direction: row-reverse;*/
-    display: -webkit-box;
-  }
   .filter {
     width: 50%;
   }
   .maps {
-    width: 50%;
-    display: block;
-    position: fixed;
+    /*width: 50%;*/
+    /*height: 100%;*/
     top: 80px;
+    position: fixed;
 
   }
-
+  #map {
+    width: 50%;
+  }
   .filds {
     padding: 0 0 0 0;
   }
 
 
-
-/*TODO: settings for screen more 548px and less 769px at width*/
+  /*TODO: settings for screen more 548px and less 769px at width*/
 @media screen and (max-width: 768px) and (min-width: 549px) {
 }
 

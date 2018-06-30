@@ -4,14 +4,16 @@ let restaurants,
 var newMap
 var markers = []
 
+
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {
-  initMap(); // added 
-  fetchNeighborhoods();
-  fetchCuisines();
-});
+/*document.addEventListener('DOMContentLoaded', (event) => {*/
+  //initMap(); // added
+  //fetchNeighborhoods();
+  //fetchCuisines();
+/*});*/
 
 /**
  * Fetch all neighborhoods and set their HTML.
@@ -208,4 +210,26 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+
+let regSW = function() {
+  // TODO: register service worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/js/main.js').then(function(registration) {
+      console.log('on', registration);
+    }).catch(function(error) {
+      console.log('off', error);
+    });
+  }
+}();
+/*let regSWinfo = function() {*/
+  //// TODO: register service worker
+  //if ('serviceWorker' in navigator) {
+    //navigator.serviceWorker.register('/js/restaurant_info.js').then(function(registration) {
+      //console.log('on2', registration);
+    //}).catch(function(error) {
+      //console.log('off2', error);
+    //});
+  //}
+/*}();*/
 
