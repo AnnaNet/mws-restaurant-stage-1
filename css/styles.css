@@ -99,7 +99,8 @@ nav h1 a {
 }
 /* ====================== Map ====================== */
 #map {
-  height: 400px;
+  /*min-height: 400px;*/
+  height: -webkit-fill-available;
 /*  width: 100%;*/
   background-color: #ccc;
   top: 80px;
