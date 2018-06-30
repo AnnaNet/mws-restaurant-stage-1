@@ -21,6 +21,14 @@ body {
   .head {
     width: 100%;
   }
+
+  .maps {
+    width: 100%;
+  }
+
+  #maincontent {
+    width: -webkit-fill-available;
+  }
 }
 
 
@@ -42,6 +50,7 @@ body {
   }
   #map {
     width: 50%;
+    top: 0;
   }
   .filds {
     padding: 0 0 0 0;
