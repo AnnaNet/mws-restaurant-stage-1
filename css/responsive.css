@@ -34,7 +34,7 @@ body {
 
 /*TODO: settings for screen more 349px and less 550px at width*/
 @media screen and (max-width: 549px) and (min-width: 350px) {
-  
+
 }
 
 
@@ -56,16 +56,19 @@ body {
     padding: 0 0 0 0;
   }
 
+  #reviews-container {
+    padding-left: 0;
+  }
 
   /*TODO: settings for screen more 548px and less 769px at width*/
-@media screen and (max-width: 768px) and (min-width: 549px) {
-}
-
-
-/*TODO: settings for fixing the layout on 950px at width*/
-@media screen and (min-width: 1200px) {
-  .container {
-    width: 1200px;
-    margin: auto;
+  @media screen and (max-width: 768px) and (min-width: 549px) {
   }
-}
+
+
+  /*TODO: settings for fixing the layout on 950px at width*/
+  @media screen and (min-width: 1200px) {
+    .container {
+      width: 1200px;
+      margin: auto;
+    }
+  }
