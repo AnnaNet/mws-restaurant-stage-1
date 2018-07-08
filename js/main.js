@@ -6,14 +6,6 @@ var markers = []
 
 
 
-/**
- * Fetch neighborhoods and cuisines as soon as the page is loaded.
- */
-/*document.addEventListener('DOMContentLoaded', (event) => {*/
-  //initMap(); // added
-  //fetchNeighborhoods();
-  //fetchCuisines();
-/*});*/
 
 /**
  * Fetch all neighborhoods and set their HTML.
@@ -75,33 +67,36 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  */
 initMap = () => {
   self.newMap = L.map('map', {
-        center: [40.722216, -73.987501],
-        zoom: 12,
-        scrollWheelZoom: false
-      });
+    center: [40.722216, -73.987501],
+    zoom: 12,
+    scrollWheelZoom: false
+  });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoiYW5uYW5ldCIsImEiOiJjamlvazI3NGQwOTE1M3B0bnhwNW9oMmZlIn0.s-bw9DLUUh2AUTyAn5dL3w',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
 
   updateRestaurants();
 }
-/* window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-} */
+
+$(document).ready(function() {
+  window.initMap = () => {
+    let loc = {
+      lat: 40.722216,
+      lng: -73.987501
+    };
+    self.map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: loc,
+      scrollwheel: false
+    });
+    updateRestaurants();
+  }
+});
 
 /**
  * Update page and map for current restaurants.
@@ -199,8 +194,8 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
-/* addMarkersToMap = (restaurants = self.restaurants) => {
+}
+addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
@@ -209,7 +204,14 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
     self.markers.push(marker);
   });
-} */
+}
+
+//Fetch neighborhoods and cuisines as soon as the page is loaded.
+document.addEventListener('DOMContentLoaded', (event) => {
+  initMap(); // added
+  fetchNeighborhoods();
+  fetchCuisines();
+});
 
 
 let regSW = function() {
@@ -222,14 +224,4 @@ let regSW = function() {
     });
   }
 }();
-/*let regSWinfo = function() {*/
-  //// TODO: register service worker
-  //if ('serviceWorker' in navigator) {
-    //navigator.serviceWorker.register('/js/restaurant_info.js').then(function(registration) {
-      //console.log('on2', registration);
-    //}).catch(function(error) {
-      //console.log('off2', error);
-    //});
-  //}
-/*}();*/
 

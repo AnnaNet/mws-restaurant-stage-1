@@ -42,6 +42,7 @@ body {
 @media screen and (min-width: 550px) {
   .filter {
     width: 50%;
+    padding-top: 80px;
   }
   .maps {
     top: 80px;
