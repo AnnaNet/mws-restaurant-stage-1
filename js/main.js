@@ -3,7 +3,7 @@ let restaurants,
   cuisines
 var newMap
 var markers = []
-
+let tabIdx = 5;
 
 
 
@@ -65,23 +65,23 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 /**
  * Initialize leaflet map, called from HTML.
  */
-initMap = () => {
-  //self.newMap = L.map('map', {
-    //center: [40.722216, -73.987501],
-    //zoom: 12,
-    //scrollWheelZoom: false
-  //});
-  //L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    //mapboxToken: 'pk.eyJ1IjoiYW5uYW5ldCIsImEiOiJjamlvazI3NGQwOTE1M3B0bnhwNW9oMmZlIn0.s-bw9DLUUh2AUTyAn5dL3w',
-    //maxZoom: 18,
-    //attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-    //'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    //'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    //id: 'mapbox.streets'
-  //}).addTo(newMap);
+initMap = (() => {
+  self.newMap = L.map('map', {
+    center: [40.722216, -73.987501],
+    zoom: 12,
+    scrollWheelZoom: false
+  });
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
+    mapboxToken: 'pk.eyJ1IjoiYW5uYW5ldCIsImEiOiJjamlvazI3NGQwOTE1M3B0bnhwNW9oMmZlIn0.s-bw9DLUUh2AUTyAn5dL3w',
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox.streets'
+  }).addTo(newMap);
 
-  //updateRestaurants();
-}
+  updateRestaurants();
+});
 
 $(document).ready(function() {
   window.initMap = () => {
@@ -132,7 +132,7 @@ resetRestaurants = (restaurants) => {
 
   // Remove all map markers
   if (self.markers) {
-    self.markers.forEach(marker => marker.remove());
+    self.markers.forEach(marker => marker.remove);
   }
   self.markers = [];
   self.restaurants = restaurants;
@@ -156,11 +156,13 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
+  $(image).attr('alt', 'photo of this restaurant');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
   const name = document.createElement('h1');
+  $(name).attr('tabindex', tabIdx++);
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -169,10 +171,12 @@ createRestaurantHTML = (restaurant) => {
   li.append(neighborhood);
 
   const address = document.createElement('p');
+  $(address).attr('tabindex', tabIdx++);
   address.innerHTML = restaurant.address;
   li.append(address);
 
   const more = document.createElement('a');
+  $(more).attr('tabindex', tabIdx++);
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
@@ -225,3 +229,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   //}
 //}();
 
+
+
+/*TODO: add tabindex to restaurant list*/
+/*$(window).load(function() {*/
+  //const listPlaces = $('#restaurants-list').children();
+  //listPlaces.each(function() {
+    //let item = $(this).child('h1');
+    //console.log (item);
+  //});
+/*});*/
