@@ -1,7 +1,7 @@
 let restaurant;
 var newMap;
 let indexReview = 0;
-
+let tabIndxReview = 10;
 /**
  * Initialize map as soon as the page is loaded.
  */
@@ -128,11 +128,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
-  console.log (title);
-  title.innerHTML = 'Reviews';
+
   if (indexReview === 0) {
+    const title = document.createElement('h2');
+    title.innerHTML = 'Reviews';
     container.appendChild(title);
+
     indexReview++;
   };
 
@@ -154,6 +155,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  $(li).attr('tabindex', tabIndxReview++);
   const name = document.createElement('p');
   name.innerHTML = review.name;
   li.appendChild(name);
