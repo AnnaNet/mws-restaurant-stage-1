@@ -200,7 +200,7 @@ nav h1 a {
 }
 .inside #map-container {
   /*background: blue none repeat scroll 0 0;*/
-  height: 87%;
+/*  height: 87%;*/
   /*  position: fixed;*/
   right: 0;
   top: 131px;
@@ -245,12 +245,12 @@ nav h1 a {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-/*  width: 90%;*/
+  width: 90%;
 }
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 0 40px 30px;
 /*  width: 50%;*/
 }
 #reviews-container {
