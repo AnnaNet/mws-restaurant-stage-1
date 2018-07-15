@@ -1,28 +1,14 @@
-
-//self.addEventListener('install', (event) => {
-    //console.log('Установлен');
-//});
-
-//self.addEventListener('activate', (event) => {
-    //console.log('Активирован');
-//});
-
-//self.addEventListener('fetch', (event) => {
-    //console.log('Происходит запрос на сервер');
-/*});*/
-/*}*/
-//$(document).ready(function() {
-
-  // TODO: register service worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/js/cache.js').then(function(registration) {
-      console.log('on', registration);
-    }).catch(function(error) {
-      console.log('off', error);
-    });
-  }
-
 const restaurantCache = 'cache-only';
+
+
+// TODO: register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/js/cache.js').then(function(registration) {
+    console.log('on', registration);
+  }).catch(function(error) {
+    console.log('off', error);
+  });
+}
 
 self.addEventListener('install', function(event) {
   console.log ('I am here!');
@@ -37,18 +23,43 @@ self.addEventListener('install', function(event) {
       ]);
     })
   );
-
 });
 
+/*self.addEventListener('fetch', function(event) {*/
+  //event.respondWith(
+    //caches.match(event.request)
+      //.then(function(response) {
+        //if (response) {
+          //return response;
+        //}
+        //return fetch(event.request);
+      //}
+    //)
+  //);
+/*});*/
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
-      .then(function(response) {
-        if (response) {
+    .then(function(response) {
+      if (response) {
+        return response;
+      }
+      var fetchRequest = event.request.clone();
+      return fetch(fetchRequest).then(
+        function(response) {
+          // Check if we received a valid response
+          if(!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+          var responseToCache = response.clone();
+          caches.open(restaurantCache)
+            .then(function(cache) {
+              cache.put(event.request, responseToCache);
+            });
+
           return response;
         }
-        return fetch(event.request);
-      }
-    )
-  );
+      );
+      })
+    );
 });
