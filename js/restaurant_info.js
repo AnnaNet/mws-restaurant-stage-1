@@ -1,5 +1,6 @@
 let restaurant;
 var newMap;
+let indexReview = 0;
 
 /**
  * Initialize map as soon as the page is loaded.
@@ -128,8 +129,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
+  console.log (title);
   title.innerHTML = 'Reviews';
-  container.appendChild(title);
+  if (indexReview === 0) {
+    container.appendChild(title);
+    indexReview++;
+  };
 
   if (!reviews) {
     const noReviews = document.createElement('p');
