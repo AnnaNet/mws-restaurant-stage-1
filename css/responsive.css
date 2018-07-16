@@ -29,21 +29,23 @@ body {
   #maincontent {
     width: -webkit-fill-available;
   }
+
   #footer {
     width: 100%;
   }
-
 }
 
 
-/*TODO: settings for screen more 349px and less 550px at width*/
-@media screen and (max-width: 549px)/* and (min-width: 350px)*/ {
+/*TODO: settings for screen more 349px at width*/
+@media screen and (max-width: 549px) {
   #restaurant-img {
     width: 100%;
   }
+
   #restaurant-cuisine {
     width: 100%;
   }
+
   .reviewsText {
     font-size: 1.5em;
   }
@@ -56,15 +58,18 @@ body {
     width: 50%;
     padding-top: 80px;
   }
+
   .maps {
     top: 80px;
     position: fixed;
     left: 50%;
   }
+
   #map {
     width: 50%;
     top: 0;
   }
+
   .filds {
     padding: 0 0 0 0;
   }
@@ -73,15 +78,12 @@ body {
     padding-left: 0;
   }
 }
-  /*TODO: settings for screen more 548px and less 769px at width*/
-  @media screen and (max-width: 768px) and (min-width: 549px) {
-  }
 
 
-  /*TODO: settings for fixing the layout on 950px at width*/
-  @media screen and (min-width: 1200px) {
-    .container {
-      width: 1200px;
-      margin: auto;
-    }
+/*TODO: settings for fixing the layout on 1200px at width*/
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+    margin: auto;
   }
+}
