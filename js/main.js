@@ -6,7 +6,6 @@ var markers = []
 let tabIdx = 5;
 
 
-
 /**
  * Fetch all neighborhoods and set their HTML.
  */
@@ -21,6 +20,7 @@ fetchNeighborhoods = () => {
   });
 }
 
+
 /**
  * Set neighborhoods HTML.
  */
@@ -33,6 +33,7 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     select.append(option);
   });
 }
+
 
 /**
  * Fetch all cuisines and set their HTML.
@@ -48,6 +49,7 @@ fetchCuisines = () => {
   });
 }
 
+
 /**
  * Set cuisines HTML.
  */
@@ -61,6 +63,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     select.append(option);
   });
 }
+
 
 /**
  * Initialize leaflet map, called from HTML.
@@ -96,6 +99,7 @@ window.initMap = () => {
   updateRestaurants();
 }
 
+
 /**
  * Update page and map for current restaurants.
  */
@@ -119,6 +123,7 @@ updateRestaurants = () => {
   })
 }
 
+
 /**
  * Clear current restaurants, their HTML and remove their map markers.
  */
@@ -136,6 +141,7 @@ resetRestaurants = (restaurants) => {
   self.restaurants = restaurants;
 }
 
+
 /**
  * Create all restaurants HTML and add them to the webpage.
  */
@@ -146,6 +152,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   });
   addMarkersToMap();
 }
+
 
 /**
  * Create restaurant HTML.
@@ -182,6 +189,7 @@ createRestaurantHTML = (restaurant) => {
   return li
 }
 
+
 /**
  * Add markers for current restaurants to the map.
  */
@@ -195,8 +203,8 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     }
     self.markers.push(marker);
   });
-
 }
+
 addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
@@ -208,32 +216,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 }
 
+
 //Fetch neighborhoods and cuisines as soon as the page is loaded.
 document.addEventListener('DOMContentLoaded', (event) => {
  // initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
 });
-
-
-/*let regSW = function() {*/
-  //// TODO: register service worker
-  //if ('serviceWorker' in navigator) {
-    //navigator.serviceWorker.register('/js/main.js').then(function(registration) {
-      //console.log('on', registration);
-    //}).catch(function(error) {
-      //console.log('off', error);
-    //});
-  //}
-//}();
-
-
-
-/*TODO: add tabindex to restaurant list*/
-/*$(window).load(function() {*/
-  //const listPlaces = $('#restaurants-list').children();
-  //listPlaces.each(function() {
-    //let item = $(this).child('h1');
-    //console.log (item);
-  //});
-/*});*/
