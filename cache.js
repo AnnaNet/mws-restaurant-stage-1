@@ -13,11 +13,10 @@ let sourceCache = [
   'index.js',
   'README.md'
 ];
-let sourceImages = [];
 
 let fullPickt = function() {
 for (let i = 1; i < 11; i++) {
-  sourceImages.push(`/img/${i}.jpg`);
+  sourceCache.push(`/img/${i}.jpg`);
 };
 }();
 
@@ -27,8 +26,7 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(rCache)
     .then(function(cache) {
-      cache.addAll(sourceCache);
-      return cache.addAll(sourceImages);
+      return cache.addAll(sourceCache);
     })
   );
 });
@@ -52,9 +50,8 @@ self.addEventListener('activate', function(event) {
 //TODO: fetch response
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request).then(function(response) {
-      if (response) return response;
-      return fetch(event.request);
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
     })
   );
 });
