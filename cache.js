@@ -8,6 +8,10 @@ let sourceCache = [
   '/js/main.js',
   '/js/restaurant_info.js',
   '/js/dbhelper.js',
+  '/data/restaurants.json',
+  'cache.js',
+  'index.js',
+  'README.md'
 ];
 let sourceImages = [];
 
